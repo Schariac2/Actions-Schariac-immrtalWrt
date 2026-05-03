@@ -20,3 +20,16 @@
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 
 # Modify banner 
+cat > package/base-files/files/etc/banner << EOF
+ / ____|    | |              (_)           
+| (___   ___| |__   __ _ _ __ _  __ _  ___ 
+ \___ \ / __| '_ \ / _` | '__| |/ _` |/ __|
+ ____) | (__| | | | (_| | |  | | (_| | (__ 
+|_____/ \___|_| |_|\__,_|_|  |_|\__,_|\___|
+
+ BE FREE AND UNAFRAID
+ WIRELESS     FREEDOM
+ -----------------------------------------------------
+ %D %V, %C
+ -----------------------------------------------------
+EOF
