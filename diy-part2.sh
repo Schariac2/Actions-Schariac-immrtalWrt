@@ -10,8 +10,28 @@
 # See /LICENSE for more information.
 #
 
+cat > package/base-files/files/etc/uci-defaults/99-custom-system <<-EOF
+#!/bin/sh
+generate_static_system() {
+	uci -q batch <<-EOF
+		delete system.@system[0]
+		add system system
+		set system.@system[-1].hostname='SchariacWrt'
+		set system.@system[-1].timezone='CST-8'
+		set system.@system[-1].ttylogin='0'
+		set system.@system[-1].log_size='128'
+		set system.@system[-1].urandom_seed='0'
+	EOF
+	uci commit system
+}
+generate_static_system
+EOF
+chmod +x package/base-files/files/etc/uci-defaults/99-custom-system
+
+
+
 # Modify default IP
-#sed -i 's/10.0.0.1/10.0.0.5/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
