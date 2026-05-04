@@ -57,6 +57,14 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
+    - name: Enable ccache accelerate
+      uses: klever1988/cachewrtbuild@main
+      with:
+         ccache: true
+         prefix: /workdir/openwrt
+         max-size: 30G
+        
+
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
