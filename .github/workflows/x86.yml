@@ -62,7 +62,6 @@ jobs:
       with:
          ccache: true
          prefix: /workdir/openwrt
-         max-size: 30G
         
 
     - name: Load custom feeds
