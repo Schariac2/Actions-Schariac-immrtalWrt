@@ -74,6 +74,13 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
+    
+    - name: Remove unwanted packages from jell feed
+      run: |
+        cd openwrt
+        rm -rf feeds/jell/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb,3ginfo,kismet,libvirt,luci-app-dnscrypt-proxy2,luci-app-go-aliyundrive-webdav,luci-app-nft-qos,luci-app-nginx-pingos,luci-app-pppwn,luci-app-school,luci-app-shairplay,luci-app-ssrust,luci-app-webd,openwrt-dist-luci,rblibtorrent,trojan-plus}
+
+
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
