@@ -27,9 +27,7 @@ env:
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  DEVICE_NAME: ""
-  FILE_DATE: ""
-  FIRMWARE: ""
+
 
 jobs:
   build:
